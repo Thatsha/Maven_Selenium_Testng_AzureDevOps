@@ -5,9 +5,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  - task: Maven@3
+  - task: UseJavaVersion@1
     inputs:
-      mavenPomFile: 'pom.xml'
-      goals: 'clean install'
+      versionSpec: '11'
+      addToPath: true
 
-  - script: 'mvn test'  # Run the tests using Maven Surefire Plugin
+  - script: 'mvn test'
+    displayName: 'Run Selenium Tests'
